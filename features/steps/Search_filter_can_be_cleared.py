@@ -32,7 +32,7 @@ def apply(context):
     context.App.filter_page.apply()
 
 @when('Verify filter is "{expected_result}" set')
-def filter_is_set(context, expected_result):
+def filter_is_set(context,expected_result):
     context.App.filter_page.filter_is_set(expected_result)
     #filter = context.driver.find_element(By.XPATH,"//a[@href='/search?options%5Bprefix%5D=last&q=cure&sort_by=relevance' and @class='active-facets__button']" ).text
     #print(filter)

@@ -8,9 +8,18 @@ def browser_init(context):
     """
     :param context: Behave context
     """
+    #chrome
     driver_path = ChromeDriverManager().install()
     service = Service(driver_path)
     context.driver = webdriver.Chrome(service=service)
+
+    #firefox
+    #service = Service('/Users/shailakshigupta/Desktop/Automation/Internship/CureSkin/python-selenium-internship_skincare/geckodriver')
+    #context.driver = webdriver.Firefox(service=service)
+
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    context.driver = webdriver.Chrome(chrome_options=options,service=service)
 
     context.driver.maximize_window()
 

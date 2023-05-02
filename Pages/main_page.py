@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from Pages.Base_page import Page
 
 
+
 class MainPage(Page):
 
     def open_cureskin(self):

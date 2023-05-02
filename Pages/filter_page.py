@@ -2,6 +2,8 @@ from selenium.webdriver.common.by import By
 from Pages.Base_page import Page
 
 
+
+
 class Filter(Page):
     filter_search = (By.XPATH, "//facet-drawer[@id='FacetDrawer']")
     face_wash = (By.XPATH,"//label[@class='facet-checkbox' and @for='Filter-Product type-1']")

@@ -9,4 +9,4 @@ Feature: Search results filter can be cleared
     When Verify filter is "Product type: Face Wash" set
     When Click to "clear all"
     Then Verify filter is removed with '18 results found for “cure”'
-git
+

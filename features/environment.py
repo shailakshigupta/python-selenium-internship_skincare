@@ -3,6 +3,7 @@ from allure_commons.types import AttachmentType
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from App.Application import Application
 
 
@@ -19,23 +20,25 @@ def browser_init(context,test_internship):
 
     #firefox
     service = Service('/Users/shailakshigupta/Desktop/Automation/Internship/CureSkin/python-selenium-internship_skincare/geckodriver')
-    #context.driver = webdriver.Firefox(service=service)
+    options = FirefoxOptions()
+    options.add_argument('-headless')
+    context.driver = webdriver.Firefox(service=service, options=options)
 
     #Browserstack
 
-    desired_cap = {
-        'browserName': 'Firefox',
-        'bstack:options': {
-            'os': 'Windows',
-            'osVersion': '10',
-            'sessionName': test_internship
-        }
-    }
-    bs_user = 'shailakshigupta_4TDvia'
-    bs_key = 'RhTQonfqSMEE9uXiwRmw'
-
-    url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-    context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
+    # desired_cap = {
+    #     'browserName': 'Firefox',
+    #     'bstack:options': {
+    #         'os': 'Windows',
+    #         'osVersion': '10',
+    #         'sessionName': test_internship
+    #     }
+    # }
+    # bs_user = 'shailakshigupta_4TDvia'
+    # bs_key = 'RhTQonfqSMEE9uXiwRmw'
+    #
+    # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+    # context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
 
 
 

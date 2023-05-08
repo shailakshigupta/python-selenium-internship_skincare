@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from App.Application import Application
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 
@@ -19,10 +20,21 @@ def browser_init(context,test_internship):
     #context.driver = webdriver.Chrome(service=service)
 
     #firefox
-    service = Service('/Users/shailakshigupta/Desktop/Automation/Internship/CureSkin/python-selenium-internship_skincare/geckodriver')
-    options = FirefoxOptions()
-    options.add_argument('-headless')
-    context.driver = webdriver.Firefox(service=service, options=options)
+    # service = Service('/Users/shailakshigupta/Desktop/Automation/Internship/CureSkin/python-selenium-internship_skincare/geckodriver')
+    # options = FirefoxOptions()
+    # options.add_argument('-headless')
+    # context.driver = webdriver.Firefox(service=service, options=options)
+
+    # MOBILE CONFIGURATION
+    mobile_emulation = {"deviceName": "Nexus 5"}
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
+    context.driver = webdriver.Chrome(executable_path='./chromedriver',chrome_options=chrome_options)
+
+    context.driver.maximize_window()
+    context.driver.implicitly_wait(4)
+    context.driver.wait = WebDriverWait(context.driver, 10)
+    context.app = Application(driver=context.driver)
 
     #Browserstack
 

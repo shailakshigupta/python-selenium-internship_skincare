@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from behave import given, when, then
 from time import sleep
 
+
 @given('Open cureskin page')
 def open_cureskin(context):
     context.driver.get('https://www.cureskin.com/')
@@ -18,6 +19,19 @@ def more_filters(context):
     #sleep(2)
     context.App.filter_page.more_filters()
 
+@when('Click More Filters - Facewash_mobile')
+def more_filters_mobile(context):
+    #context.driver.find_element(By.XPATH, '//span[@class="mobile-facets__open button button--small button--full-width"]').click()
+    #sleep(2)
+    context.App.filter_page.more_filters()
+
+
+@when('Click Product type')
+def product(context):
+    #context.driver.find_element(By.XPATH, '//details[@class="mobile-facets__details js-filter" and @data-index="mobile-1"]').click()
+    #sleep(2)
+    context.App.filter_page.more_filters()
+
 
 @when('Click on facewash')
 def select_facewash(context):
@@ -29,7 +43,7 @@ def select_facewash(context):
 def apply(context):
     #context.driver.find_element(By.XPATH,"//button[@class='no-js-hidden button button--small']").click()
     sleep(2)
-    context.App.filter_page.apply()
+    context.App.filter_page.click_on_apply()
 
 @when('Verify filter is "{expected_result}" set')
 def filter_is_set(context,expected_result):
